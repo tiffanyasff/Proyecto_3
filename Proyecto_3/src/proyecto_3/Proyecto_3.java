@@ -4,6 +4,8 @@
  */
 package proyecto_3;
 
+import vista.VistaAgregarContacto;
+
 /**
  *
  * @author USER CT
@@ -14,7 +16,7 @@ public class Proyecto_3 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        VistaAgregarContacto agregar = new VistaAgregarContacto();
     }
     
 }
