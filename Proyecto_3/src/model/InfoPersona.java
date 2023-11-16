@@ -8,6 +8,6 @@ package model;
  *
  * @author USER CT
  */
-public class Usuario {
+public class InfoPersona {
     
 }
