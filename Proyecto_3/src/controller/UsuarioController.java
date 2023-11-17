@@ -9,5 +9,5 @@ package controller;
  * @author USER CT
  */
 public class UsuarioController {
-    
+        
 }

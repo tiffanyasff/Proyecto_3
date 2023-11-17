@@ -4,6 +4,8 @@
  */
 package proyecto_3;
 
+import ProyectoDAO.UsuarioImplementationDAO;
+import controller.AgregarController;
 import vista.VistaAgregarContacto;
 
 /**
@@ -17,6 +19,7 @@ public class Proyecto_3 {
      */
     public static void main(String[] args) {
         VistaAgregarContacto agregar = new VistaAgregarContacto();
+        AgregarController agg = new AgregarController(new UsuarioImplementationDAO(), agregar);
     }
     
 }

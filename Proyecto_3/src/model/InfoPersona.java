@@ -18,8 +18,9 @@ public class InfoPersona {
     private String identificacion;
     private String lugarAsociado;
     private ArrayList<String> direcciones;
+    private ArrayList<String> telefonos;
 
-    public InfoPersona(String nombre, String apellido, String tipoContacto, String fechaNacimiento, String identificacion, String lugarAsociado, ArrayList<String> direcciones) {
+    public InfoPersona(String nombre, String apellido, String tipoContacto, String fechaNacimiento, String identificacion, String lugarAsociado, ArrayList<String> direcciones, ArrayList<String> telefonos) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.tipoContacto = tipoContacto;
@@ -27,6 +28,7 @@ public class InfoPersona {
         this.identificacion = identificacion;
         this.lugarAsociado = lugarAsociado;
         this.direcciones = direcciones;
+        this.telefonos = telefonos;
     }
     
     public InfoPersona() {
@@ -37,6 +39,7 @@ public class InfoPersona {
         this.identificacion = "id";
         this.lugarAsociado = "lugar";
         this.direcciones = new ArrayList<>();
+        this.telefonos = new ArrayList<>();
     }
 
     public String getNombre() {
@@ -94,6 +97,16 @@ public class InfoPersona {
     public void setDirecciones(ArrayList<String> direcciones) {
         this.direcciones = direcciones;
     }
+
+    public ArrayList<String> getTelefonos() {
+        return telefonos;
+    }
+
+    public void setTelefonos(ArrayList<String> telefonos) {
+        this.telefonos = telefonos;
+    }
+    
+    
     
     
     

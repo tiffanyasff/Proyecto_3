@@ -26,8 +26,8 @@ public class UsuarioImplementationDAO implements InterfaceInfoPersona{
     }
 
     @Override
-    public void crearPersona(String nombre, String apellido, String tipo, String fecha, String id, String lugar, ArrayList<String> direcciones) {
-        InfoPersona persona = new InfoPersona(nombre, apellido, tipo, fecha, id, lugar, direcciones);
+    public void crearPersona(String nombre, String apellido, String tipo, String fecha, String id, String lugar, ArrayList<String> direcciones, ArrayList<String> telefonos) {
+        InfoPersona persona = new InfoPersona(nombre, apellido, tipo, fecha, id, lugar, direcciones, telefonos);
         
         if (persona.getTipoContacto() == "empleado") {
             directorio.getEmpleados().add(persona);
