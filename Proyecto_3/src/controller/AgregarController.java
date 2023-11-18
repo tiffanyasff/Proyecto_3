@@ -18,13 +18,15 @@ import vista.VistaAgregarContacto;
 public class AgregarController {
     private UsuarioImplementationDAO usarioDao;
     private VistaAgregarContacto vista;
-    private ArrayList<String> direcciones;
+    private ArrayList<String> direcciones, lugares, telefonos;
     private ArrayList<JTextField> campos;
 
     public AgregarController(UsuarioImplementationDAO usarioDao, VistaAgregarContacto vista) {
         this.usarioDao = usarioDao;
         this.vista = vista;
         direcciones = new ArrayList<>();
+        lugares = new ArrayList<>();
+        telefonos = new ArrayList<>();
         campos = new ArrayList<>();
         campos.add(vista.getNombreTextField());
         campos.add(vista.getApellidoTextField());
@@ -34,15 +36,35 @@ public class AgregarController {
         
         vista.addBtnCrearListener(new btnCrearListener());
         vista.addBtnDireccionListener(new btnDireccionesListener());
+        vista.addBtnTelefonosListener(new btnTelefonosListener());
     }
     
     class btnCrearListener implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            //if (verificarEspaciosLLenos()) {
-            //    usarioDao.crearPersona(vista.getNombreTextField(), vista.getApellidoTextField(), vista.getApellidoTextField(), vista.getFechaNacimientoTextField(), vista.getIdentificacionTextField(), vista.getLugarAsociadoSeleccionado(), direcciones);
-            //}
+            if (verificarEspaciosLLenos()) {
+                usarioDao.crearPersona(vista.getNombreTextField().getText(), vista.getApellidoTextField().getText(), vista.getTipoSeleccionado(), vista.getFechaNacimientoTextField().getText(), vista.getIdentificacionTextField().getText(), lugares, direcciones, telefonos);
+            }
+            
+        }
+        
+    }
+    
+    class btnTelefonosListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (!vista.getTelefonosTextField().getText().trim().isEmpty() && !vista.getLugarAsociado().getText().trim().isEmpty() ) {
+                telefonos.add(vista.getTelefonosTextField().getText());
+                lugares.add(vista.getLugarAsociado().getText());
+                vista.getTelefonosTextField().setText("");
+                vista.getLugarAsociado().setText("");
+                System.out.println(telefonos);
+                System.out.println(lugares);
+            }else{
+                System.out.println("nonas");
+            }
             
         }
         
@@ -57,7 +79,7 @@ public class AgregarController {
             if (vista.getDireccionTextField().getText() != "") {
                 direcciones.add(vista.getDireccionTextField().getText());
                 System.out.println(direcciones);
-                System.out.println(vista.getLugarAsociadoSeleccionado());
+                System.out.println(vista.getTipoSeleccionado());
             }
         }
         

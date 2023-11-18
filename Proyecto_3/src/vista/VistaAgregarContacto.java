@@ -76,7 +76,7 @@ public class VistaAgregarContacto extends JFrame {
         lugarAsociadoField.setBounds(220, 515, 100, 20);
         direccionTextField.setBounds(220, 590, 100, 20);
         
-
+        
         panel.add(btnCrearContacto);
         panel.add(btnAgregarDireccion);
         panel.add(btnAgregarTelefono);
@@ -176,7 +176,7 @@ public class VistaAgregarContacto extends JFrame {
         this.direccionTextField = direccionTextField;
     }
 
-        public JTextField getLugarAsociado() {
+    public JTextField getLugarAsociado() {
         return lugarAsociadoField;
     }
 
@@ -184,7 +184,7 @@ public class VistaAgregarContacto extends JFrame {
         this.lugarAsociadoField = lugarAsociado;
     }
     
-    public String getLugarAsociadoSeleccionado() {
+    public String getTipoSeleccionado() {
         return (String) tipoContactoTextCombo.getSelectedItem();
     }
 
