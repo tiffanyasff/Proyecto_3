@@ -56,6 +56,7 @@ public class VistaAgregarContacto extends JFrame {
 
         btnCrearContacto.setBounds(60, 660, 200, 60);
         btnAgregarDireccion.setBounds(280, 660, 200, 60);
+        btnAgregarTelefono.setBounds(280, 35, 200, 60);
 
         telefonosLabel.setBounds(40, 1, 150, 90);
         nombreLabel.setBounds(40, 80, 150, 90);
