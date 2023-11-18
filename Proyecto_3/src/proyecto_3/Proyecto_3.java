@@ -6,6 +6,7 @@ package proyecto_3;
 
 import ProyectoDAO.UsuarioImplementationDAO;
 import controller.AgregarController;
+import vista.VentanaPrincipal;
 import vista.VistaAgregarContacto;
 
 /**
@@ -18,8 +19,11 @@ public class Proyecto_3 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        VistaAgregarContacto agregar = new VistaAgregarContacto();
-        AgregarController agg = new AgregarController(new UsuarioImplementationDAO(), agregar);
+        //VistaAgregarContacto agregar = new VistaAgregarContacto();
+        //AgregarController agg = new AgregarController(new UsuarioImplementationDAO(), agregar);
+        //VentanaPrincipal ven = new VentanaPrincipal();
+        
+        new VentanaPrincipal().setVisible(true);
     }
     
 }
