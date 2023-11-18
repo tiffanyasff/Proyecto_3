@@ -10,10 +10,10 @@ import model.InfoPersona;
 public class VistaAgregarContacto extends JFrame {
 
     private JFrame ventanaAgregar;
-    private JTextField nombreTextField, apellidoTextField, tipoContactoTextField, fechaNacimientoTextField, identificacionTextField, direccionTextField;
+    private JTextField nombreTextField, apellidoTextField, tipoContactoTextField, fechaNacimientoTextField, identificacionTextField, direccionTextField, telefonosTextField;
     private JComboBox<String> lugarAsociadoComboBox;
     private JTextArea direccionesTextArea;
-    private JButton btnCrearContacto, btnAgregarDireccion;
+    private JButton btnCrearContacto, btnAgregarDireccion, btnAgregarTelefono;
 
     public VistaAgregarContacto() {
         ventanaAgregar = new JFrame("Agregar contacto");
@@ -34,6 +34,7 @@ public class VistaAgregarContacto extends JFrame {
         JLabel identificacionLabel = new JLabel("Identificación:");
         JLabel lugarAsociadoLabel = new JLabel("Lugar Asociado:");
         JLabel direccionesLabel = new JLabel("Direcciones:");
+        JLabel telefonosLabel = new JLabel("Telefonos:");
 
         // Campos de texto
         nombreTextField = new JTextField();
@@ -42,7 +43,7 @@ public class VistaAgregarContacto extends JFrame {
         fechaNacimientoTextField = new JTextField();
         identificacionTextField = new JTextField();
         direccionTextField = new JTextField();
-        direccionesTextArea = new JTextArea();
+        telefonosTextField = new JTextField();
 
         // ComboBox para el lugar asociado
         String[] opcionesLugarAsociado = {"Empleado", "Estudiante", "Profesor"};
@@ -51,10 +52,12 @@ public class VistaAgregarContacto extends JFrame {
         // Botones
         btnCrearContacto = new JButton("Crear Contacto");
         btnAgregarDireccion = new JButton("Agregar dirección");
+        btnAgregarDireccion = new JButton("Agregar telefono");
 
         btnCrearContacto.setBounds(60, 660, 200, 60);
         btnAgregarDireccion.setBounds(280, 660, 200, 60);
 
+        telefonosLabel.setBounds(40, 1, 150, 90);
         nombreLabel.setBounds(40, 80, 150, 90);
         apellidoLabel.setBounds(40, 160, 150, 90);
         tipoContactoLabel.setBounds(40, 240, 150, 90);
@@ -63,6 +66,7 @@ public class VistaAgregarContacto extends JFrame {
         lugarAsociadoLabel.setBounds(40, 480, 150, 90);
         direccionesLabel.setBounds(40, 560, 150, 90);
 
+        telefonosTextField.setBounds(220, 35, 100, 20);
         nombreTextField.setBounds(220, 120, 100, 20);
         apellidoTextField.setBounds(220, 195, 100, 20);
         lugarAsociadoComboBox.setBounds(220, 275, 100, 20);
@@ -82,6 +86,7 @@ public class VistaAgregarContacto extends JFrame {
         panel.add(identificacionLabel);
         panel.add(lugarAsociadoLabel);
         panel.add(direccionesLabel);
+        panel.add(telefonosLabel);
 
         panel.add(nombreTextField);
         panel.add(apellidoTextField);
@@ -90,6 +95,7 @@ public class VistaAgregarContacto extends JFrame {
         panel.add(identificacionTextField);
         panel.add(lugarAsociadoComboBox);
         panel.add(direccionTextField);
+        panel.add(telefonosTextField);
         
         
 

@@ -16,11 +16,11 @@ public class InfoPersona {
     private String tipoContacto;
     private String fechaNacimiento;
     private String identificacion;
-    private String lugarAsociado;
+    private ArrayList<String> lugarAsociado;
     private ArrayList<String> direcciones;
     private ArrayList<String> telefonos;
 
-    public InfoPersona(String nombre, String apellido, String tipoContacto, String fechaNacimiento, String identificacion, String lugarAsociado, ArrayList<String> direcciones, ArrayList<String> telefonos) {
+    public InfoPersona(String nombre, String apellido, String tipoContacto, String fechaNacimiento, String identificacion, ArrayList<String> lugarAsociado, ArrayList<String> direcciones, ArrayList<String> telefonos) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.tipoContacto = tipoContacto;
@@ -37,7 +37,7 @@ public class InfoPersona {
         this.tipoContacto = "tipoContacto";
         this.fechaNacimiento = "fecha";
         this.identificacion = "id";
-        this.lugarAsociado = "lugar";
+        this.lugarAsociado = new ArrayList<>();;
         this.direcciones = new ArrayList<>();
         this.telefonos = new ArrayList<>();
     }
@@ -82,11 +82,11 @@ public class InfoPersona {
         this.identificacion = identificacion;
     }
 
-    public String getLugarAsociado() {
+    public ArrayList<String> getLugarAsociado() {
         return lugarAsociado;
     }
 
-    public void setLugarAsociado(String lugarAsociado) {
+    public void setLugarAsociado(ArrayList<String> lugarAsociado) {
         this.lugarAsociado = lugarAsociado;
     }
 
