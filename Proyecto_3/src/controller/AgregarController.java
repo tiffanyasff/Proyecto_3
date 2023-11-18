@@ -28,7 +28,7 @@ public class AgregarController {
         campos = new ArrayList<>();
         campos.add(vista.getNombreTextField());
         campos.add(vista.getApellidoTextField());
-        campos.add(vista.getTipoContactoTextField());
+        campos.add(vista.getLugarAsociado());
         campos.add(vista.getFechaNacimientoTextField());
         campos.add(vista.getIdentificacionTextField());
         

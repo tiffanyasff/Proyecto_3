@@ -10,8 +10,8 @@ import model.InfoPersona;
 public class VistaAgregarContacto extends JFrame {
 
     private JFrame ventanaAgregar;
-    private JTextField nombreTextField, apellidoTextField, tipoContactoTextField, fechaNacimientoTextField, identificacionTextField, direccionTextField, telefonosTextField;
-    private JComboBox<String> lugarAsociadoComboBox;
+    private JTextField nombreTextField, apellidoTextField, lugarAsociadoField, fechaNacimientoTextField, identificacionTextField, direccionTextField, telefonosTextField;
+    private JComboBox<String> tipoContactoTextCombo;
     private JTextArea direccionesTextArea;
     private JButton btnCrearContacto, btnAgregarDireccion, btnAgregarTelefono;
 
@@ -39,7 +39,7 @@ public class VistaAgregarContacto extends JFrame {
         // Campos de texto
         nombreTextField = new JTextField();
         apellidoTextField = new JTextField();
-        tipoContactoTextField = new JTextField();
+        lugarAsociadoField = new JTextField();
         fechaNacimientoTextField = new JTextField();
         identificacionTextField = new JTextField();
         direccionTextField = new JTextField();
@@ -47,16 +47,16 @@ public class VistaAgregarContacto extends JFrame {
 
         // ComboBox para el lugar asociado
         String[] opcionesLugarAsociado = {"Empleado", "Estudiante", "Profesor"};
-        lugarAsociadoComboBox = new JComboBox<>(opcionesLugarAsociado);
+        tipoContactoTextCombo = new JComboBox<>(opcionesLugarAsociado);
 
         // Botones
         btnCrearContacto = new JButton("Crear Contacto");
         btnAgregarDireccion = new JButton("Agregar dirección");
-        btnAgregarDireccion = new JButton("Agregar telefono");
+        btnAgregarTelefono = new JButton("Agregar telefono");
 
-        btnCrearContacto.setBounds(60, 660, 200, 60);
-        btnAgregarDireccion.setBounds(280, 660, 200, 60);
-        btnAgregarTelefono.setBounds(280, 35, 200, 60);
+        btnCrearContacto.setBounds(190, 660, 200, 60);
+        btnAgregarDireccion.setBounds(340, 590, 200, 20);
+        btnAgregarTelefono.setBounds(340, 35, 200, 20);
 
         telefonosLabel.setBounds(40, 1, 150, 90);
         nombreLabel.setBounds(40, 80, 150, 90);
@@ -68,17 +68,18 @@ public class VistaAgregarContacto extends JFrame {
         direccionesLabel.setBounds(40, 560, 150, 90);
 
         telefonosTextField.setBounds(220, 35, 100, 20);
-        nombreTextField.setBounds(220, 120, 100, 20);
+        nombreTextField.setBounds(220, 115, 100, 20);
         apellidoTextField.setBounds(220, 195, 100, 20);
-        lugarAsociadoComboBox.setBounds(220, 275, 100, 20);
+        tipoContactoTextCombo.setBounds(220, 275, 100, 20);
         fechaNacimientoTextField.setBounds(220, 360, 100, 20);
         identificacionTextField.setBounds(220, 440, 100, 20);
-        tipoContactoTextField.setBounds(220, 520, 100, 20);
+        lugarAsociadoField.setBounds(220, 515, 100, 20);
         direccionTextField.setBounds(220, 590, 100, 20);
         
 
         panel.add(btnCrearContacto);
         panel.add(btnAgregarDireccion);
+        panel.add(btnAgregarTelefono);
 
         panel.add(nombreLabel);
         panel.add(apellidoLabel);
@@ -91,10 +92,10 @@ public class VistaAgregarContacto extends JFrame {
 
         panel.add(nombreTextField);
         panel.add(apellidoTextField);
-        panel.add(tipoContactoTextField);
+        panel.add(lugarAsociadoField);
         panel.add(fechaNacimientoTextField);
         panel.add(identificacionTextField);
-        panel.add(lugarAsociadoComboBox);
+        panel.add(tipoContactoTextCombo);
         panel.add(direccionTextField);
         panel.add(telefonosTextField);
         
@@ -113,6 +114,10 @@ public class VistaAgregarContacto extends JFrame {
     
     public void addBtnDireccionListener(ActionListener listener) {
         btnAgregarDireccion.addActionListener(listener);
+    }
+    
+    public void addBtnTelefonosListener(ActionListener listener) {
+        btnAgregarTelefono.addActionListener(listener);
     }
 
     public JFrame getVentanaAgregar() {
@@ -139,12 +144,12 @@ public class VistaAgregarContacto extends JFrame {
         this.apellidoTextField = apellidoTextField;
     }
 
-    public JTextField getTipoContactoTextField() {
-        return tipoContactoTextField;
+    public JComboBox<String> getTipoContactoTextField() {
+        return tipoContactoTextCombo;
     }
 
-    public void setTipoContactoTextField(JTextField tipoContactoTextField) {
-        this.tipoContactoTextField = tipoContactoTextField;
+    public void setTipoContactoTextField(JComboBox<String> tipoContactoTextField) {
+        this.tipoContactoTextCombo = tipoContactoTextField;
     }
 
     public JTextField getFechaNacimientoTextField() {
@@ -171,16 +176,16 @@ public class VistaAgregarContacto extends JFrame {
         this.direccionTextField = direccionTextField;
     }
 
-    public JComboBox<String> getLugarAsociadoComboBox() {
-        return lugarAsociadoComboBox;
+        public JTextField getLugarAsociado() {
+        return lugarAsociadoField;
     }
 
-    public void setLugarAsociadoComboBox(JComboBox<String> lugarAsociadoComboBox) {
-        this.lugarAsociadoComboBox = lugarAsociadoComboBox;
+    public void setLugarAsociado(JTextField lugarAsociado) {
+        this.lugarAsociadoField = lugarAsociado;
     }
     
     public String getLugarAsociadoSeleccionado() {
-        return (String) lugarAsociadoComboBox.getSelectedItem();
+        return (String) tipoContactoTextCombo.getSelectedItem();
     }
 
     public JTextArea getDireccionesTextArea() {
@@ -206,6 +211,23 @@ public class VistaAgregarContacto extends JFrame {
     public void setBtnAgregarDireccion(JButton btnAgregarDireccion) {
         this.btnAgregarDireccion = btnAgregarDireccion;
     }
+
+    public JTextField getTelefonosTextField() {
+        return telefonosTextField;
+    }
+
+    public void setTelefonosTextField(JTextField telefonosTextField) {
+        this.telefonosTextField = telefonosTextField;
+    }
+
+    public JButton getBtnAgregarTelefono() {
+        return btnAgregarTelefono;
+    }
+
+    public void setBtnAgregarTelefono(JButton btnAgregarTelefono) {
+        this.btnAgregarTelefono = btnAgregarTelefono;
+    }
+    
     
     
 }
