@@ -137,10 +137,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         modeloTabla.addColumn("Apellido");
         modeloTabla.addColumn("Número");
         modeloTabla.addColumn("Tipo");
+        modeloTabla.addColumn("Identificacion");
         jTableContactos.setModel(modeloTabla);
         jScrollPane1.setViewportView(jTableContactos);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 270, 230));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 400, 230));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

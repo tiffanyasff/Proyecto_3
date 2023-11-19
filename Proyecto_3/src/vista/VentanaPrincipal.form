@@ -228,7 +228,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="70" y="180" width="270" height="230"/>
+              <AbsoluteConstraints x="10" y="180" width="400" height="230"/>
             </Constraint>
           </Constraints>
 
@@ -241,7 +241,7 @@
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="modeloTabla = new DefaultTableModel();&#xa;modeloTabla.addColumn(&quot;Nombre&quot;);&#xa;modeloTabla.addColumn(&quot;Apellido&quot;);&#xa;modeloTabla.addColumn(&quot;N&#xfa;mero&quot;);&#xa;modeloTabla.addColumn(&quot;Tipo&quot;);"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="modeloTabla = new DefaultTableModel();&#xa;modeloTabla.addColumn(&quot;Nombre&quot;);&#xa;modeloTabla.addColumn(&quot;Apellido&quot;);&#xa;modeloTabla.addColumn(&quot;N&#xfa;mero&quot;);&#xa;modeloTabla.addColumn(&quot;Tipo&quot;);&#xa;modeloTabla.addColumn(&quot;Identificacion&quot;);"/>
               </AuxValues>
             </Component>
           </SubComponents>

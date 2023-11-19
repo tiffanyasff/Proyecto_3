@@ -8,6 +8,7 @@ import ProyectoDAO.UsuarioImplementationDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import model.InfoPersona;
+import vista.VentanaActualizar;
 import vista.VentanaPrincipal;
 import vista.VistaAgregarContacto;
 
@@ -18,6 +19,8 @@ import vista.VistaAgregarContacto;
 public class UsuarioController {
     private UsuarioImplementationDAO directorio;
     private VentanaPrincipal ventana;
+    private String identificacionActualizar = "";
+    private String tipoActualizar = "";
 
     public UsuarioController(UsuarioImplementationDAO implemetacionDao, VentanaPrincipal ventana) {
         
@@ -27,6 +30,9 @@ public class UsuarioController {
         
         this.ventana = ventana;
         ventana.addBtnCrearListener(new btnCrearListener());
+        ventana.addBtnEliminarListener(new btnEliminarListener());
+        ventana.addBtnActualizarListener(new btnActualizarListener());
+        ventana.addBtnVerListener(new btnVerListener());
         ventana.setVisible(true);
         agregarRegistrosLista();
         
@@ -43,6 +49,50 @@ public class UsuarioController {
         }
         
     }
+    class btnEliminarListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int filaSeleccionada = ventana.getjTableContactos().getSelectedRow();
+            String numeroIdentificacion = (String) ventana.getModeloTabla().getValueAt(filaSeleccionada, 4);
+            String tipoContacto = (String) ventana.getModeloTabla().getValueAt(filaSeleccionada, 3);
+            System.out.println(tipoContacto);
+            System.out.println(numeroIdentificacion);
+            directorio.eliminarPersona(numeroIdentificacion, tipoContacto);
+            agregarRegistrosLista();
+            
+            
+        }
+        
+    }
+    class btnActualizarListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int filaSeleccionada = ventana.getjTableContactos().getSelectedRow();
+            String identificacion = (String) ventana.getModeloTabla().getValueAt(filaSeleccionada, 4);
+            String tipo= (String) ventana.getModeloTabla().getValueAt(filaSeleccionada, 3);
+            directorio.setIdentificacionActualizar(identificacion);
+            directorio.setTipoActualizar(tipo);
+            VentanaActualizar vista = new VentanaActualizar();
+            ActualizarController controller = new ActualizarController(directorio, vista);
+            ventana.dispose();
+            
+            
+            
+        }
+        
+    }
+    class btnVerListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("ver");
+            
+            
+        }
+        
+    }
     
     void agregarFilaTabla(InfoPersona contacto) {
            
@@ -50,13 +100,15 @@ public class UsuarioController {
                 contacto.getNombre(),
                 contacto.getApellido(),
                 contacto.getTelefonos().get(0),
-                contacto.getTipoContacto()
+                contacto.getTipoContacto(),
+                contacto.getIdentificacion()
         };
         ventana.getModeloTabla().addRow(fila);
     }
     
     
     void agregarRegistrosLista(){
+        ventana.getModeloTabla().setRowCount(0);
         for(InfoPersona persona : directorio.getDirectorio().getEmpleados()){
             if(persona != null){
                 agregarFilaTabla(persona);
@@ -72,6 +124,38 @@ public class UsuarioController {
                 agregarFilaTabla(persona);
             }
         }
+    }
+
+    public UsuarioImplementationDAO getDirectorio() {
+        return directorio;
+    }
+
+    public void setDirectorio(UsuarioImplementationDAO directorio) {
+        this.directorio = directorio;
+    }
+
+    public VentanaPrincipal getVentana() {
+        return ventana;
+    }
+
+    public void setVentana(VentanaPrincipal ventana) {
+        this.ventana = ventana;
+    }
+
+    public String getIdentificacionActualizar() {
+        return identificacionActualizar;
+    }
+
+    public void setIdentificacionActualizar(String identificacionActualizar) {
+        this.identificacionActualizar = identificacionActualizar;
+    }
+
+    public String getTipoActualizar() {
+        return tipoActualizar;
+    }
+
+    public void setTipoActualizar(String tipoActualizar) {
+        this.tipoActualizar = tipoActualizar;
     }
     
     

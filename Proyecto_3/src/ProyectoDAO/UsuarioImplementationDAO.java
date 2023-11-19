@@ -6,6 +6,7 @@ package ProyectoDAO;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.logging.Logger;
 import model.Directorio;
 import model.InfoPersona;
 
@@ -14,6 +15,9 @@ import model.InfoPersona;
  * @author USER CT
  */
 public class UsuarioImplementationDAO implements InterfaceInfoPersona{
+    
+    private String identificacionActualizar = "";
+    private String tipoActualizar = "";
     
     private Directorio directorio = new Directorio(); 
 
@@ -69,7 +73,7 @@ public class UsuarioImplementationDAO implements InterfaceInfoPersona{
     }
 
     @Override
-    public void actualizarPersona(String nombre, String apellido, String tipo, String fecha, String id, ArrayList<String> lugar, ArrayList<String> direcciones, InfoPersona persona) {
+    public void actualizarPersona(String nombre, String apellido, String tipo, String fecha, String id, ArrayList<String> lugar, ArrayList<String> telefonos, ArrayList<String> direcciones, InfoPersona persona) {
         persona.setNombre(nombre);
         persona.setApellido(apellido);
         persona.setTipoContacto(tipo);
@@ -117,6 +121,26 @@ public class UsuarioImplementationDAO implements InterfaceInfoPersona{
         }
         return null; // Se llega aquí si no se encontró la persona en ninguna de las listas
     }
+
+    public String getIdentificacionActualizar() {
+        return identificacionActualizar;
+    }
+
+    public void setIdentificacionActualizar(String identificacionActualizar) {
+        this.identificacionActualizar = identificacionActualizar;
+    }
+
+    public String getTipoActualizar() {
+        return tipoActualizar;
+    }
+
+    public void setTipoActualizar(String tipoActualizar) {
+        this.tipoActualizar = tipoActualizar;
+    }
+    
+    
+    
+    
     
     
     
