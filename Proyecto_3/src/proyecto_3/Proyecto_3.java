@@ -6,6 +6,7 @@ package proyecto_3;
 
 import ProyectoDAO.UsuarioImplementationDAO;
 import controller.AgregarController;
+import controller.UsuarioController;
 import vista.VentanaPrincipal;
 import vista.VistaAgregarContacto;
 
@@ -21,9 +22,11 @@ public class Proyecto_3 {
     public static void main(String[] args) {
         //VistaAgregarContacto agregar = new VistaAgregarContacto();
         //AgregarController agg = new AgregarController(new UsuarioImplementationDAO(), agregar);
-        //VentanaPrincipal ven = new VentanaPrincipal();
-        
-        new VentanaPrincipal().setVisible(true);
+        UsuarioImplementationDAO info = new UsuarioImplementationDAO();
+        VentanaPrincipal ven = new VentanaPrincipal();
+        UsuarioController principal = new UsuarioController(info, ven);
+        //ven.setVisible(true);
+        //new VentanaPrincipal().setVisible(true);
     }
     
 }

@@ -46,7 +46,7 @@ public class VistaAgregarContacto extends JFrame {
         telefonosTextField = new JTextField();
 
         // ComboBox para el lugar asociado
-        String[] opcionesLugarAsociado = {"Empleado", "Estudiante", "Profesor"};
+        String[] opcionesLugarAsociado = {"empleado", "estudiante", "profesor"};
         tipoContactoTextCombo = new JComboBox<>(opcionesLugarAsociado);
 
         // Botones

@@ -6,6 +6,7 @@
 
 package vista;
 
+import java.awt.event.ActionListener;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -27,6 +28,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     public VentanaPrincipal() {
         initComponents();
+        
+        
     }
 
     /**
@@ -225,6 +228,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTable jTableContactos;
     // End of variables declaration//GEN-END:variables
 
+    
+    public void addBtnCrearListener(ActionListener listener) {
+        btnCrear.addActionListener(listener);
+    }
+    
+    public void addBtnActualizarListener(ActionListener listener) {
+        btnActualizar.addActionListener(listener);
+    }
+    
+    public void addBtnEliminarListener(ActionListener listener) {
+        btnEliminar.addActionListener(listener);
+    }
+    
+    public void addBtnVerListener(ActionListener listener) {
+        btnVer.addActionListener(listener);
+    }
+    
     public JButton getBtnActualizar() {
         return btnActualizar;
     }
