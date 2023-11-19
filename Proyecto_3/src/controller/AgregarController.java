@@ -8,7 +8,9 @@ import ProyectoDAO.UsuarioImplementationDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import model.InfoPersona;
 import vista.VentanaPrincipal;
 import vista.VistaAgregarContacto;
 
@@ -46,20 +48,31 @@ public class AgregarController {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (verificarEspaciosLLenos()) {
-                usuarioDao.crearPersona(vista.getNombreTextField().getText(), vista.getApellidoTextField().getText(), vista.getTipoSeleccionado(), vista.getFechaNacimientoTextField().getText(), vista.getIdentificacionTextField().getText(), lugares, direcciones, telefonos);
-                System.out.println(usuarioDao.getDirectorio().getEmpleados());
-                vista.getNombreTextField().setText("");
-                vista.getTelefonosTextField().setText("");
-                vista.getApellidoTextField().setText("");
-                vista.getFechaNacimientoTextField().setText("");
-                vista.getIdentificacionTextField().setText("");
-                vista.getLugarAsociado().setText("");
-                vista.getDireccionTextField().setText("");
-                vista.getVentanaAgregar().dispose();
-                //new UsuarioController(usuarioDao,new VentanaPrincipal());
-                UsuarioController principal = new UsuarioController (usuarioDao,new VentanaPrincipal());
+                if (!telefonos.isEmpty() && !direcciones.isEmpty()) {
+                    if(idExiste(vista.getIdentificacionTextField().getText()) == false){
+                        usuarioDao.crearPersona(vista.getNombreTextField().getText(), vista.getApellidoTextField().getText(), vista.getTipoSeleccionado(), vista.getFechaNacimientoTextField().getText(), vista.getIdentificacionTextField().getText(), lugares, direcciones, telefonos);
+                        System.out.println(usuarioDao.getDirectorio().getEmpleados());
+                        vista.getNombreTextField().setText("");
+                        vista.getTelefonosTextField().setText("");
+                        vista.getApellidoTextField().setText("");
+                        vista.getFechaNacimientoTextField().setText("");
+                        vista.getIdentificacionTextField().setText("");
+                        vista.getLugarAsociado().setText("");
+                        vista.getDireccionTextField().setText("");
+                        vista.getVentanaAgregar().dispose();
+                        //new UsuarioController(usuarioDao,new VentanaPrincipal());
+                        UsuarioController principal = new UsuarioController(usuarioDao, new VentanaPrincipal());
+                    }else{
+                        JOptionPane.showMessageDialog(null, "El identificador ya existe, ingresa uno distinto.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } else {
+                    // Mostrar mensaje de error si telefonos o direcciones están vacíos
+                    JOptionPane.showMessageDialog(null, "Llena los campos de telefonos, direcciones o lugares asociados.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                // Mostrar mensaje de advertencia si no todos los espacios están llenos
+                JOptionPane.showMessageDialog(null, "Rellena todos los espacios con asterisco.", "Advertencia", JOptionPane.WARNING_MESSAGE);
             }
-            
         }
         
     }
@@ -89,7 +102,7 @@ public class AgregarController {
         @Override
         public void actionPerformed(ActionEvent e) {
             
-            if (vista.getDireccionTextField().getText() != "") {
+            if (!vista.getDireccionTextField().getText().equals("") || direcciones.isEmpty() == true) {
                 direcciones.add(vista.getDireccionTextField().getText());
                 vista.getDireccionTextField().setText("");
                 System.out.println(direcciones);
@@ -109,5 +122,34 @@ public class AgregarController {
         }
         return valido;
     }
+    
+    public boolean idExiste(String id) {
+        ArrayList<InfoPersona> empleados = usuarioDao.getDirectorio().getEmpleados();
+        ArrayList<InfoPersona> profesores = usuarioDao.getDirectorio().getProfesores();
+        ArrayList<InfoPersona> estudiantes = usuarioDao.getDirectorio().getEstudiantes();
+
+        for (InfoPersona empleado : empleados) {
+            if (empleado.getIdentificacion().equals(id)) {
+                return true; // El ID existe en la lista de empleados
+            }
+        }
+
+        for (InfoPersona profesor : profesores) {
+            if (profesor.getIdentificacion().equals(id)) {
+                return true; // El ID existe en la lista de profesores
+            }
+        }
+
+        for (InfoPersona estudiante : estudiantes) {
+            if (estudiante.getIdentificacion().equals(id)) {
+                return true; // El ID existe en la lista de estudiantes
+            }
+        }
+
+        return false; // El ID no existe en ninguna de las listas
+    }
+    
+    
+
     
 }

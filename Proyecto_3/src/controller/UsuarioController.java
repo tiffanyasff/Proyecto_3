@@ -7,6 +7,7 @@ package controller;
 import ProyectoDAO.UsuarioImplementationDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import model.InfoPersona;
 import vista.VentanaPrincipal;
 import vista.VistaAgregarContacto;
 
@@ -27,6 +28,7 @@ public class UsuarioController {
         this.ventana = ventana;
         ventana.addBtnCrearListener(new btnCrearListener());
         ventana.setVisible(true);
+        agregarRegistrosLista();
         
     }
     
@@ -42,6 +44,35 @@ public class UsuarioController {
         
     }
     
+    void agregarFilaTabla(InfoPersona contacto) {
+           
+        Object[] fila = {
+                contacto.getNombre(),
+                contacto.getApellido(),
+                contacto.getTelefonos().get(0),
+                contacto.getTipoContacto()
+        };
+        ventana.getModeloTabla().addRow(fila);
+    }
+    
+    
+    void agregarRegistrosLista(){
+        for(InfoPersona persona : directorio.getDirectorio().getEmpleados()){
+            if(persona != null){
+                agregarFilaTabla(persona);
+            }
+        }
+        for(InfoPersona persona : directorio.getDirectorio().getEstudiantes()){
+            if(persona != null){
+                agregarFilaTabla(persona);
+            }
+        }
+        for(InfoPersona persona : directorio.getDirectorio().getProfesores()){
+            if(persona != null){
+                agregarFilaTabla(persona);
+            }
+        }
+    }
     
     
     

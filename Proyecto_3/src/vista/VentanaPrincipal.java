@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 
 
@@ -104,7 +105,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 470, -1, -1));
 
         btnActualizar.setBackground(new java.awt.Color(255, 0, 0));
-        btnActualizar.setFont(new java.awt.Font("Dubai Medium", 0, 12)); // NOI18N
+        btnActualizar.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
         btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
         btnActualizar.setText("actualizar");
         jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 470, 90, 30));
@@ -131,17 +132,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel2.setText("Universidad del valle");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 250, -1));
 
-        jTableContactos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Nombre", "Apellido", "Numero", "Tipo"
-            }
-        ));
+        modeloTabla = new DefaultTableModel();
+        modeloTabla.addColumn("Nombre");
+        modeloTabla.addColumn("Apellido");
+        modeloTabla.addColumn("Número");
+        modeloTabla.addColumn("Tipo");
+        jTableContactos.setModel(modeloTabla);
         jScrollPane1.setViewportView(jTableContactos);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 270, 230));
@@ -227,7 +223,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableContactos;
     // End of variables declaration//GEN-END:variables
+    private DefaultTableModel modeloTabla;
 
+    public DefaultTableModel getModeloTabla() {
+        return modeloTabla;
+    }
+
+    public void setModeloTabla(DefaultTableModel modeloTabla) {
+        this.modeloTabla = modeloTabla;
+    }
     
     public void addBtnCrearListener(ActionListener listener) {
         btnCrear.addActionListener(listener);
@@ -356,6 +360,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public void setjTableContactos(JTable jTableContactos) {
         this.jTableContactos = jTableContactos;
     }
+    
+    
 
     
     
