@@ -69,6 +69,7 @@ public class UsuarioController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            
             int filaSeleccionada = ventana.getjTableContactos().getSelectedRow();
             String identificacion = (String) ventana.getModeloTabla().getValueAt(filaSeleccionada, 4);
             String tipo= (String) ventana.getModeloTabla().getValueAt(filaSeleccionada, 3);

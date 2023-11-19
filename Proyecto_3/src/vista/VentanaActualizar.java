@@ -22,7 +22,7 @@ public class VentanaActualizar {
     private JTextField nombreTextField, apellidoTextField, lugarAsociadoField, fechaNacimientoTextField, identificacionTextField, direccionTextField, telefonosTextField;
     private JComboBox<String> tipoContactoTextCombo;
     private JTextArea direccionesTextArea;
-    private JButton btnCrearActualizar, btnAgregarDireccion, btnAgregarTelefono;
+    private JButton btnActualizarActualizar, btnAgregarDireccion, btnAgregarTelefono;
 
     public VentanaActualizar() {
         ventanaActualizar = new JFrame("Agregar contacto");
@@ -59,11 +59,11 @@ public class VentanaActualizar {
         tipoContactoTextCombo = new JComboBox<>(opcionesLugarAsociado);
 
         // Botones
-        btnCrearActualizar = new JButton("Crear Contacto");
+        btnActualizarActualizar = new JButton("Actualizar Contacto");
         btnAgregarDireccion = new JButton("Agregar dirección");
         btnAgregarTelefono = new JButton("Agregar telefono");
 
-        btnCrearActualizar.setBounds(190, 660, 200, 60);
+        btnActualizarActualizar.setBounds(190, 660, 200, 60);
         btnAgregarDireccion.setBounds(340, 590, 200, 20);
         btnAgregarTelefono.setBounds(340, 35, 200, 20);
 
@@ -86,7 +86,7 @@ public class VentanaActualizar {
         direccionTextField.setBounds(220, 590, 100, 20);
         
         
-        panel.add(btnCrearActualizar);
+        panel.add(btnActualizarActualizar);
         panel.add(btnAgregarDireccion);
         panel.add(btnAgregarTelefono);
 
@@ -116,8 +116,8 @@ public class VentanaActualizar {
 
     }
     
-    public void addBtnCrearListener(ActionListener listener) {
-        btnCrearActualizar.addActionListener(listener);
+    public void addBtnActualizarListener(ActionListener listener) {
+        btnActualizarActualizar.addActionListener(listener);
     }
     
     
@@ -206,11 +206,11 @@ public class VentanaActualizar {
     }
 
     public JButton getBtnCrearContacto() {
-        return btnCrearActualizar;
+        return btnActualizarActualizar;
     }
 
     public void setBtnCrearContacto(JButton btnCrearContacto) {
-        this.btnCrearActualizar = btnCrearContacto;
+        this.btnActualizarActualizar = btnCrearContacto;
     }
 
     public JButton getBtnAgregarDireccion() {

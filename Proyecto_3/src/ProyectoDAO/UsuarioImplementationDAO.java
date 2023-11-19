@@ -79,8 +79,15 @@ public class UsuarioImplementationDAO implements InterfaceInfoPersona{
         persona.setTipoContacto(tipo);
         persona.setFechaNacimiento(fecha);
         persona.setIdentificacion(id);
-        persona.setLugarAsociado(lugar);
-        persona.setDirecciones(direcciones);
+        for(String telefono : telefonos){
+            persona.getTelefonos().add(telefono);
+        }
+        for(String direccion : direcciones){
+            persona.getDirecciones().add(direccion);
+        }
+        for(String lugares : lugar){
+            persona.getLugarAsociado().add(lugares);
+        }
     }
 
     
@@ -127,6 +134,7 @@ public class UsuarioImplementationDAO implements InterfaceInfoPersona{
     }
 
     public void setIdentificacionActualizar(String identificacionActualizar) {
+        this.identificacionActualizar = "";
         this.identificacionActualizar = identificacionActualizar;
     }
 
@@ -135,7 +143,9 @@ public class UsuarioImplementationDAO implements InterfaceInfoPersona{
     }
 
     public void setTipoActualizar(String tipoActualizar) {
+        this.tipoActualizar = "";
         this.tipoActualizar = tipoActualizar;
+        
     }
     
     
