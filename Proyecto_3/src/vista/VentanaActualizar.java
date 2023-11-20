@@ -85,6 +85,8 @@ public class VentanaActualizar {
         lugarAsociadoField.setBounds(220, 515, 100, 20);
         direccionTextField.setBounds(220, 590, 100, 20);
         
+        identificacionTextField.setEnabled(false);
+        
         
         panel.add(btnActualizarActualizar);
         panel.add(btnAgregarDireccion);

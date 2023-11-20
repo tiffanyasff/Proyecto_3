@@ -74,6 +74,7 @@ public class UsuarioImplementationDAO implements InterfaceInfoPersona{
 
     @Override
     public void actualizarPersona(String nombre, String apellido, String tipo, String fecha, String id, ArrayList<String> lugar, ArrayList<String> telefonos, ArrayList<String> direcciones, InfoPersona persona) {
+        
         persona.setNombre(nombre);
         persona.setApellido(apellido);
         persona.setTipoContacto(tipo);
@@ -88,6 +89,7 @@ public class UsuarioImplementationDAO implements InterfaceInfoPersona{
         for(String lugares : lugar){
             persona.getLugarAsociado().add(lugares);
         }
+        
     }
 
     

@@ -8,6 +8,7 @@ import ProyectoDAO.UsuarioImplementationDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import model.InfoPersona;
@@ -33,7 +34,7 @@ public class ActualizarController {
         campos.add(vista.getFechaNacimientoTextField());
         campos.add(vista.getIdentificacionTextField());
         vista.addBtnActualizarListener(new btnActualizarListener());
-        vista.addBtnDireccionListener(new btnAgregarTelefonoListener());
+        vista.addBtnDireccionListener(new btnAgregarDireccionesListener());
         vista.addBtnTelefonosListener(new btnAgregarTelefonoListener());
         direcciones = new ArrayList<>();
         lugares = new ArrayList<>();
@@ -47,6 +48,17 @@ public class ActualizarController {
         vista.getApellidoTextField().setText(usuarioDao.getPersona(usuarioDao.getTipoActualizar(), usuarioDao.getIdentificacionActualizar()).getApellido());
         vista.getFechaNacimientoTextField().setText(usuarioDao.getPersona(usuarioDao.getTipoActualizar(), usuarioDao.getIdentificacionActualizar()).getFechaNacimiento());
         vista.getIdentificacionTextField().setText(usuarioDao.getPersona(usuarioDao.getTipoActualizar(), usuarioDao.getIdentificacionActualizar()).getIdentificacion());
+        //String[] opcionesLugarAsociado = {"empleado", "estudiante", "profesor"};
+        //tipoContactoTextCombo = new JComboBox<>(opcionesLugarAsociado);
+        
+        if (usuarioDao.getPersona(usuarioDao.getTipoActualizar(), usuarioDao.getIdentificacionActualizar()).getTipoContacto().equals("empleado")){
+            vista.getTipoContactoTextField().setSelectedIndex(0);
+        }else if(usuarioDao.getPersona(usuarioDao.getTipoActualizar(), usuarioDao.getIdentificacionActualizar()).getTipoContacto().equals("estudiante")){
+            vista.getTipoContactoTextField().setSelectedIndex(1);
+        }else{
+            vista.getTipoContactoTextField().setSelectedIndex(2);
+        }
+
         
     }
     

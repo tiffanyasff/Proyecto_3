@@ -33,6 +33,9 @@ public class UsuarioController {
         ventana.addBtnEliminarListener(new btnEliminarListener());
         ventana.addBtnActualizarListener(new btnActualizarListener());
         ventana.addBtnVerListener(new btnVerListener());
+        ventana.addJradioEstudiantesListener(new radioEstudiantes());
+        ventana.addJradioProfesoresListener(new radioProfesores());
+        ventana.addJradioEmpleadosListener(new radioEmpleados());
         ventana.setVisible(true);
         agregarRegistrosLista();
         
@@ -60,6 +63,9 @@ public class UsuarioController {
             System.out.println(numeroIdentificacion);
             directorio.eliminarPersona(numeroIdentificacion, tipoContacto);
             agregarRegistrosLista();
+            ventana.getjRadioEstudiantes().setSelected(false);
+            ventana.getjRadioEmpleados().setSelected(false);
+            ventana.getjRadioProfesores().setSelected(false);
             
             
         }
@@ -95,6 +101,50 @@ public class UsuarioController {
         
     }
     
+    class radioEstudiantes implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            ventana.getjRadioEmpleados().setSelected(false);
+            ventana.getjRadioProfesores().setSelected(false);
+            agregarRegistrosEstudiantes();
+            System.out.println("ver");
+            
+            
+        }
+        
+    }
+    
+    class radioEmpleados implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            ventana.getjRadioEstudiantes().setSelected(false);
+            ventana.getjRadioProfesores().setSelected(false);
+            agregarRegistrosEmpleados();
+            System.out.println("ver");
+            
+            
+        }
+        
+    }
+    
+    class radioProfesores implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            ventana.getjRadioEstudiantes().setSelected(false);
+            ventana.getjRadioEmpleados().setSelected(false);
+            agregarRegistrosProfesores();
+            System.out.println("ver");
+            
+            
+        }
+        
+    }
+    
+    
+    
     void agregarFilaTabla(InfoPersona contacto) {
            
         Object[] fila = {
@@ -125,6 +175,37 @@ public class UsuarioController {
                 agregarFilaTabla(persona);
             }
         }
+    }
+    
+    void agregarRegistrosEstudiantes(){
+        ventana.getModeloTabla().setRowCount(0);
+       
+        for(InfoPersona persona : directorio.getDirectorio().getEstudiantes()){
+            if(persona != null){
+                agregarFilaTabla(persona);
+            }
+        }
+        
+    }
+    
+    void agregarRegistrosProfesores(){
+        ventana.getModeloTabla().setRowCount(0);
+        
+        for(InfoPersona persona : directorio.getDirectorio().getProfesores()){
+            if(persona != null){
+                agregarFilaTabla(persona);
+            }
+        }
+    }
+    
+    void agregarRegistrosEmpleados(){
+        ventana.getModeloTabla().setRowCount(0);
+        for(InfoPersona persona : directorio.getDirectorio().getEmpleados()){
+            if(persona != null){
+                agregarFilaTabla(persona);
+            }
+        }
+        
     }
 
     public UsuarioImplementationDAO getDirectorio() {

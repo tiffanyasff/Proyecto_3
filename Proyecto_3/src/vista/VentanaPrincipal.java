@@ -237,6 +237,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public void addBtnCrearListener(ActionListener listener) {
         btnCrear.addActionListener(listener);
     }
+    public void addJradioEstudiantesListener(ActionListener listener) {
+        jRadioEstudiantes.addActionListener(listener);
+    }
+    public void addJradioProfesoresListener(ActionListener listener) {
+        jRadioProfesores.addActionListener(listener);
+    }
+    public void addJradioEmpleadosListener(ActionListener listener) {
+        jRadioEmpleados.addActionListener(listener);
+    }
     
     public void addBtnActualizarListener(ActionListener listener) {
         btnActualizar.addActionListener(listener);
