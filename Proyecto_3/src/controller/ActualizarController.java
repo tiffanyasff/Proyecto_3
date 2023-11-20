@@ -7,6 +7,8 @@ package controller;
 import ProyectoDAO.UsuarioImplementationDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -14,6 +16,7 @@ import javax.swing.JTextField;
 import model.InfoPersona;
 import vista.VentanaActualizar;
 import vista.VentanaPrincipal;
+import vista.VistaActNumeros;
 
 /**
  *
@@ -37,6 +40,7 @@ public class ActualizarController {
         vista.addBtnActualizarListener(new btnActualizarListener());
         vista.addBtnDireccionListener(new btnAgregarDireccionesListener());
         vista.addBtnTelefonosListener(new btnAgregarTelefonoListener());
+        vista.addBtnEliminarTelefonoListener(new btnEliminarTelefonoListener());
         direcciones = new ArrayList<>();
         lugares = new ArrayList<>();
         telefonos = new ArrayList<>();
@@ -125,6 +129,35 @@ public class ActualizarController {
                 System.out.println(direcciones);
                 System.out.println(vista.getTipoSeleccionado());
             }
+        }
+        
+    }
+    
+    
+    class btnEliminarTelefonoListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // Crear la nueva ventana
+            VistaActNumeros subVista = new VistaActNumeros();
+
+            // Desactivar la ventana principal
+            vista.getPanel().setEnabled(false);
+
+            // Mostrar la nueva ventana
+            subVista.setVisible(true);
+
+            // Crear el controlador para la nueva ventana
+            ActualizarSubVentanaController controlador = new ActualizarSubVentanaController(usuarioDao, subVista);
+
+            // Agregar un WindowListener para volver a activar la ventana principal cuando la nueva ventana se cierre
+            subVista.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    // Activar la ventana principal cuando la nueva ventana se cierre
+                    vista.getPanel().setEnabled(true);
+                }
+            });
         }
         
     }

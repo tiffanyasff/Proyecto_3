@@ -17,6 +17,8 @@ public interface InterfaceInfoPersona {
     public void actualizarPersona(String nombre, String apellido, String tipo, String fecha, String id, ArrayList<String> lugar,ArrayList<String> telefonos, ArrayList<String> direcciones, InfoPersona persona, String tipoViejo );
     public ArrayList<InfoPersona> getPersonas(String tipo);
     public InfoPersona getPersona(String tipo, String id);
+    public void eliminarTelefono(String Telefono, ArrayList<String> telefonos, ArrayList<String> LugaresAsociados);
+    public void eliminarDireccion(String direccion, ArrayList<String> direcciones);
     
     
 }

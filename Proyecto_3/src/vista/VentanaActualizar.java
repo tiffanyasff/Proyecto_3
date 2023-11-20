@@ -22,7 +22,8 @@ public class VentanaActualizar {
     private JTextField nombreTextField, apellidoTextField, lugarAsociadoField, fechaNacimientoTextField, identificacionTextField, direccionTextField, telefonosTextField;
     private JComboBox<String> tipoContactoTextCombo;
     private JTextArea direccionesTextArea;
-    private JButton btnActualizarActualizar, btnAgregarDireccion, btnAgregarTelefono;
+    private JButton btnActualizarActualizar, btnAgregarDireccion, btnAgregarTelefono, btnEliminarTelefono;
+    private JPanel panel;
 
     public VentanaActualizar() {
         ventanaActualizar = new JFrame("Agregar contacto");
@@ -32,7 +33,7 @@ public class VentanaActualizar {
     }
 
     public void iniciarComponentes() {
-        JPanel panel = new JPanel();
+        panel = new JPanel();
         panel.setLayout(null);
 
         // Etiquetas
@@ -62,10 +63,12 @@ public class VentanaActualizar {
         btnActualizarActualizar = new JButton("Actualizar Contacto");
         btnAgregarDireccion = new JButton("Agregar dirección");
         btnAgregarTelefono = new JButton("Agregar telefono");
+        btnEliminarTelefono = new JButton("Eliminar telefono y direccion");
 
         btnActualizarActualizar.setBounds(190, 660, 200, 60);
         btnAgregarDireccion.setBounds(340, 590, 200, 20);
         btnAgregarTelefono.setBounds(340, 35, 200, 20);
+        btnEliminarTelefono.setBounds(355, 365, 200, 90);
 
         telefonosLabel.setBounds(40, 1, 150, 90);
         nombreLabel.setBounds(40, 80, 150, 90);
@@ -91,6 +94,7 @@ public class VentanaActualizar {
         panel.add(btnActualizarActualizar);
         panel.add(btnAgregarDireccion);
         panel.add(btnAgregarTelefono);
+        panel.add(btnEliminarTelefono);
 
         panel.add(nombreLabel);
         panel.add(apellidoLabel);
@@ -120,6 +124,10 @@ public class VentanaActualizar {
     
     public void addBtnActualizarListener(ActionListener listener) {
         btnActualizarActualizar.addActionListener(listener);
+    }
+    
+    public void addBtnEliminarTelefonoListener(ActionListener listener) {
+        btnEliminarTelefono.addActionListener(listener);
     }
     
     
@@ -238,6 +246,27 @@ public class VentanaActualizar {
     public void setBtnAgregarTelefono(JButton btnAgregarTelefono) {
         this.btnAgregarTelefono = btnAgregarTelefono;
     }
+
+    public JButton getBtnEliminarTelefono() {
+        return btnEliminarTelefono;
+    }
+
+    public void setBtnEliminarTelefono(JButton btnEliminarTelefono) {
+        this.btnEliminarTelefono = btnEliminarTelefono;
+    }
+
+    public JPanel getPanel() {
+        return panel;
+    }
+
+    public void setPanel(JPanel panel) {
+        this.panel = panel;
+    }
+    
+    
+    
+    
+    
     
     
     

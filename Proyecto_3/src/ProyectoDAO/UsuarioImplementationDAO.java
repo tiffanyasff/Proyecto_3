@@ -93,18 +93,28 @@ public class UsuarioImplementationDAO implements InterfaceInfoPersona{
         
         if(!tipo.equals(tipoViejo)){
             eliminarPersona(id, tipoViejo);
-        }
-        
-        if (persona.getTipoContacto() == "empleado") {
+            if (persona.getTipoContacto() == "empleado") {
             directorio.getEmpleados().add(persona);
             System.out.println("contacto añadido");
-        }else if(persona.getTipoContacto() == "estudiante"){
-            directorio.getEstudiantes().add(persona);
-            System.out.println("contacto añadido");
-        }else if(persona.getTipoContacto() == "profesor"){
-            directorio.getProfesores().add(persona);
-            System.out.println("contacto añadido");
+            }else if(persona.getTipoContacto() == "estudiante"){
+                directorio.getEstudiantes().add(persona);
+                System.out.println("contacto añadido");
+            }else if(persona.getTipoContacto() == "profesor"){
+                directorio.getProfesores().add(persona);
+                System.out.println("contacto añadido");
+            }
         }
+        
+        //if (persona.getTipoContacto() == "empleado") {
+        //    directorio.getEmpleados().add(persona);
+          //  System.out.println("contacto añadido");
+        //}else if(persona.getTipoContacto() == "estudiante"){
+        //    directorio.getEstudiantes().add(persona);
+        //    System.out.println("contacto añadido");
+        //}else if(persona.getTipoContacto() == "profesor"){
+        //    directorio.getProfesores().add(persona);
+        //    System.out.println("contacto añadido");
+        //}
         
     }
 
@@ -165,6 +175,32 @@ public class UsuarioImplementationDAO implements InterfaceInfoPersona{
         this.tipoActualizar = tipoActualizar;
         
     }
+
+    @Override
+    public void eliminarTelefono(String Telefono, ArrayList<String> telefonos, ArrayList<String> lugaresAsociados) {
+        if (telefonos.size() > 1) {
+            for (int i = 0; i < telefonos.size(); i++) {
+                if (telefonos.get(i).equals(Telefono)) {
+                    telefonos.remove(i);
+                    lugaresAsociados.remove(i);
+                    break; // Salir del bucle después de eliminar el elemento
+                }
+            }
+        }
+    }
+
+    @Override
+    public void eliminarDireccion(String direccion, ArrayList<String> direcciones) {
+        if (direcciones.size() > 1) {
+            for (int i = 0; i < direcciones.size(); i++) {
+                if (direcciones.get(i).equals(direccion)) {
+                    direcciones.remove(i);
+                    break; // Salir del bucle después de eliminar el elemento
+                }
+            }
+        }
+    }
+    
     
     
     
