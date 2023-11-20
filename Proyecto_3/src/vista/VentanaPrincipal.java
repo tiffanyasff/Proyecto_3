@@ -65,6 +65,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jRadioEmpleados.setBackground(new java.awt.Color(255, 255, 255));
         jRadioEmpleados.setFont(new java.awt.Font("Dubai Medium", 0, 18)); // NOI18N
         jRadioEmpleados.setText("Empleados");
+        jRadioEmpleados.setFocusPainted(false);
         jRadioEmpleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioEmpleadosActionPerformed(evt);
@@ -75,11 +76,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jRadioEstudiantes.setBackground(new java.awt.Color(255, 255, 255));
         jRadioEstudiantes.setFont(new java.awt.Font("Dubai Medium", 0, 18)); // NOI18N
         jRadioEstudiantes.setText("Estudiantes");
+        jRadioEstudiantes.setFocusPainted(false);
         jPanel1.add(jRadioEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 120, 40));
 
         jRadioProfesores.setBackground(new java.awt.Color(255, 255, 255));
         jRadioProfesores.setFont(new java.awt.Font("Dubai Medium", 0, 18)); // NOI18N
         jRadioProfesores.setText("Profesores");
+        jRadioProfesores.setFocusPainted(false);
         jRadioProfesores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioProfesoresActionPerformed(evt);
@@ -91,6 +94,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnVer.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
         btnVer.setForeground(new java.awt.Color(255, 255, 255));
         btnVer.setText("ver");
+        btnVer.setFocusPainted(false);
         btnVer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVerActionPerformed(evt);
@@ -102,18 +106,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnEliminar.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setText("eliminar");
+        btnEliminar.setFocusPainted(false);
         jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 470, -1, -1));
 
         btnActualizar.setBackground(new java.awt.Color(255, 0, 0));
         btnActualizar.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
         btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
         btnActualizar.setText("actualizar");
+        btnActualizar.setFocusPainted(false);
         jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 470, 90, 30));
 
         btnCrear.setBackground(new java.awt.Color(255, 0, 0));
         btnCrear.setFont(new java.awt.Font("Dubai Medium", 0, 14)); // NOI18N
         btnCrear.setForeground(new java.awt.Color(255, 255, 255));
         btnCrear.setText("crear");
+        btnCrear.setFocusPainted(false);
         btnCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCrearActionPerformed(evt);
@@ -141,7 +148,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jTableContactos.setModel(modeloTabla);
         jScrollPane1.setViewportView(jTableContactos);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 400, 230));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 400, 230));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

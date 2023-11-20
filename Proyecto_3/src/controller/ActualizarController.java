@@ -24,6 +24,7 @@ public class ActualizarController {
     private VentanaActualizar vista;
     private ArrayList<JTextField> campos;
     private ArrayList<String> direcciones, lugares, telefonos;
+    private String tipoViejo;
     
     public ActualizarController(UsuarioImplementationDAO usuarioDao, VentanaActualizar vista){
         this.usuarioDao = usuarioDao; 
@@ -48,6 +49,7 @@ public class ActualizarController {
         vista.getApellidoTextField().setText(usuarioDao.getPersona(usuarioDao.getTipoActualizar(), usuarioDao.getIdentificacionActualizar()).getApellido());
         vista.getFechaNacimientoTextField().setText(usuarioDao.getPersona(usuarioDao.getTipoActualizar(), usuarioDao.getIdentificacionActualizar()).getFechaNacimiento());
         vista.getIdentificacionTextField().setText(usuarioDao.getPersona(usuarioDao.getTipoActualizar(), usuarioDao.getIdentificacionActualizar()).getIdentificacion());
+        
         //String[] opcionesLugarAsociado = {"empleado", "estudiante", "profesor"};
         //tipoContactoTextCombo = new JComboBox<>(opcionesLugarAsociado);
         
@@ -58,7 +60,7 @@ public class ActualizarController {
         }else{
             vista.getTipoContactoTextField().setSelectedIndex(2);
         }
-
+        tipoViejo = vista.getTipoSeleccionado();
         
     }
     
@@ -77,8 +79,11 @@ public class ActualizarController {
                      lugares,
                           telefonos,
                           direcciones,
-                    usuarioDao.getPersona(usuarioDao.getTipoActualizar(), usuarioDao.getIdentificacionActualizar()));
-                    System.out.println(usuarioDao.getDirectorio().getEmpleados());
+                    usuarioDao.getPersona(usuarioDao.getTipoActualizar(), usuarioDao.getIdentificacionActualizar()),
+                          tipoViejo);
+                    //System.out.println(usuarioDao.getDirectorio().getEmpleados());
+                    System.out.println(tipoViejo);
+                    System.out.println(vista.getTipoSeleccionado());
                     vista.getVentanaAgregar().dispose();
                     UsuarioController principal = new UsuarioController(usuarioDao, new VentanaPrincipal());
                 }else{

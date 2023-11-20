@@ -89,7 +89,7 @@ public class AgregarController {
                 System.out.println(telefonos);
                 System.out.println(lugares);
             }else{
-                System.out.println("nonas");
+                JOptionPane.showMessageDialog(null, "Rellene el campo de telefonos y lugar asociado.", "Advertencia", JOptionPane.WARNING_MESSAGE);
             }
             
         }
@@ -102,11 +102,13 @@ public class AgregarController {
         @Override
         public void actionPerformed(ActionEvent e) {
             
-            if (!vista.getDireccionTextField().getText().equals("") || direcciones.isEmpty() == true) {
+            if (vista.getDireccionTextField().getText().equals("") == false) {
                 direcciones.add(vista.getDireccionTextField().getText());
                 vista.getDireccionTextField().setText("");
                 System.out.println(direcciones);
                 System.out.println(vista.getTipoSeleccionado());
+            }else{
+                JOptionPane.showMessageDialog(null, "Rellena el campo de direccion", "Advertencia", JOptionPane.WARNING_MESSAGE);
             }
         }
         

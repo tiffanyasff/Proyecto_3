@@ -7,6 +7,7 @@ package controller;
 import ProyectoDAO.UsuarioImplementationDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import model.InfoPersona;
 import vista.VentanaActualizar;
 import vista.VentanaPrincipal;
@@ -56,39 +57,53 @@ public class UsuarioController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+        if (ventana.getjTableContactos().getRowCount() > 0) {
             int filaSeleccionada = ventana.getjTableContactos().getSelectedRow();
-            String numeroIdentificacion = (String) ventana.getModeloTabla().getValueAt(filaSeleccionada, 4);
-            String tipoContacto = (String) ventana.getModeloTabla().getValueAt(filaSeleccionada, 3);
-            System.out.println(tipoContacto);
-            System.out.println(numeroIdentificacion);
-            directorio.eliminarPersona(numeroIdentificacion, tipoContacto);
-            agregarRegistrosLista();
-            ventana.getjRadioEstudiantes().setSelected(false);
-            ventana.getjRadioEmpleados().setSelected(false);
-            ventana.getjRadioProfesores().setSelected(false);
-            
-            
+
+            if (filaSeleccionada != -1) {
+                String numeroIdentificacion = (String) ventana.getModeloTabla().getValueAt(filaSeleccionada, 4);
+                String tipoContacto = (String) ventana.getModeloTabla().getValueAt(filaSeleccionada, 3);
+
+                System.out.println(tipoContacto);
+                System.out.println(numeroIdentificacion);
+
+                directorio.eliminarPersona(numeroIdentificacion, tipoContacto);
+                agregarRegistrosLista();
+                ventana.getjRadioEstudiantes().setSelected(false);
+                ventana.getjRadioEmpleados().setSelected(false);
+                ventana.getjRadioProfesores().setSelected(false);
+            } else {
+                // No hay fila seleccionada
+                JOptionPane.showMessageDialog(null, "No hay fila seleccionada", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            }
+        } else {
+            // La tabla no tiene filas
+            JOptionPane.showMessageDialog(null, "La tabla está vacía", "Advertencia", JOptionPane.WARNING_MESSAGE);
         }
+    }
         
     }
     class btnActualizarListener implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            
             int filaSeleccionada = ventana.getjTableContactos().getSelectedRow();
-            String identificacion = (String) ventana.getModeloTabla().getValueAt(filaSeleccionada, 4);
-            String tipo= (String) ventana.getModeloTabla().getValueAt(filaSeleccionada, 3);
-            directorio.setIdentificacionActualizar(identificacion);
-            directorio.setTipoActualizar(tipo);
-            VentanaActualizar vista = new VentanaActualizar();
-            ActualizarController controller = new ActualizarController(directorio, vista);
-            ventana.dispose();
-            
-            
-            
+
+            if (filaSeleccionada != -1) {
+                String identificacion = (String) ventana.getModeloTabla().getValueAt(filaSeleccionada, 4);
+                String tipo = (String) ventana.getModeloTabla().getValueAt(filaSeleccionada, 3);
+
+                directorio.setIdentificacionActualizar(identificacion);
+                directorio.setTipoActualizar(tipo);
+
+                VentanaActualizar vista = new VentanaActualizar();
+                ActualizarController controller = new ActualizarController(directorio, vista);
+                ventana.dispose();
+            } else {
+                // No hay fila seleccionada
+                JOptionPane.showMessageDialog(null, "No hay fila seleccionada", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            }
         }
-        
     }
     class btnVerListener implements ActionListener{
 
