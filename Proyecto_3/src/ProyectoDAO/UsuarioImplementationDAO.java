@@ -18,6 +18,8 @@ public class UsuarioImplementationDAO implements InterfaceInfoPersona{
     
     private String identificacionActualizar = "";
     private String tipoActualizar = "";
+    private String identificacionVer = "";
+    private String tipoVer = "";
     
     private Directorio directorio = new Directorio(); 
 
@@ -199,6 +201,22 @@ public class UsuarioImplementationDAO implements InterfaceInfoPersona{
                 }
             }
         }
+    }
+
+    public String getIdentificacionVer() {
+        return identificacionVer;
+    }
+
+    public void setIdentificacionVer(String identificacionVer) {
+        this.identificacionVer = identificacionVer;
+    }
+
+    public String getTipoVer() {
+        return tipoVer;
+    }
+
+    public void setTipoVer(String tipoVer) {
+        this.tipoVer = tipoVer;
     }
     
     

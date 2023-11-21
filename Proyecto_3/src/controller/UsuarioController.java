@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import model.InfoPersona;
 import vista.VentanaActualizar;
+import vista.VentanaMostrar;
 import vista.VentanaPrincipal;
 import vista.VistaAgregarContacto;
 
@@ -22,6 +23,8 @@ public class UsuarioController {
     private VentanaPrincipal ventana;
     private String identificacionActualizar = "";
     private String tipoActualizar = "";
+    private String identificacionVer = "";
+    private String tipoVer = "";
 
     public UsuarioController(UsuarioImplementationDAO implemetacionDao, VentanaPrincipal ventana) {
         
@@ -48,8 +51,6 @@ public class UsuarioController {
         public void actionPerformed(ActionEvent e) {
             ventana.dispose();
             AgregarController vista = new AgregarController(directorio, new VistaAgregarContacto());
-            
-            
         }
         
     }
@@ -109,7 +110,23 @@ public class UsuarioController {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println("ver");
+            int filaSeleccionada = ventana.getjTableContactos().getSelectedRow();
+
+            if (filaSeleccionada != -1) {
+                String identificacion = (String) ventana.getModeloTabla().getValueAt(filaSeleccionada, 4);
+                String tipo = (String) ventana.getModeloTabla().getValueAt(filaSeleccionada, 3);
+
+                directorio.setIdentificacionVer(identificacion);
+                directorio.setTipoVer(tipo);
+
+                VentanaMostrar vista = new VentanaMostrar();
+                MostrarControler controller = new MostrarControler(vista, implemetacionDao);
+                ventana.dispose();
+            } else {
+                // No hay fila seleccionada
+                JOptionPane.showMessageDialog(null, "No hay fila seleccionada", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            }
+            
             
             
         }
@@ -254,6 +271,24 @@ public class UsuarioController {
     public void setTipoActualizar(String tipoActualizar) {
         this.tipoActualizar = tipoActualizar;
     }
+
+    public String getIdentificacionVer() {
+        return identificacionVer;
+    }
+
+    public void setIdentificacionVer(String identificacionVer) {
+        this.identificacionVer = identificacionVer;
+    }
+
+    public String getTipoVer() {
+        return tipoVer;
+    }
+
+    public void setTipoVer(String tipoVer) {
+        this.tipoVer = tipoVer;
+    }
+    
+    
     
     
     
